@@ -1,5 +1,9 @@
 console.log("Hello world");
 
+let humanScore = 0;
+
+let computerScore = 0;
+
 function getComputerChoice () {
     let words = ["rock", "paper", "scissors"]
     let choice = Math.floor(Math.random() * words.length);
