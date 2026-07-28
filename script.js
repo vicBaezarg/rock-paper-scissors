@@ -11,3 +11,9 @@ console.log(getComputerChoice());
 console.log(getComputerChoice());
 console.log(getComputerChoice());
 console.log(getComputerChoice());
+
+function getHumanChoice () {
+    return prompt("¿Piedra, papel o tijera?");
+}
+
+console.log(getHumanChoice());
