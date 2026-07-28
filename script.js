@@ -17,7 +17,19 @@ console.log(getComputerChoice());
 console.log(getComputerChoice());
 
 function getHumanChoice () {
-    return prompt("¿Piedra, papel o tijera?");
+    return prompt("Rock, Paper or Scissors?");
 }
 
 console.log(getHumanChoice());
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice == "rock"){
+        if (computerChoice == "paper"){
+            computerScore++;
+            return "Paper beats Rock. YOU LOSE!";
+        } else if (computerChoice == "scissors"){
+            humanScore++;
+            return "Rock beats Scissors. YOU WIN!"
+        }
+    }
+}
