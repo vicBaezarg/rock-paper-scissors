@@ -5,6 +5,13 @@ const rockButton = document.querySelector("#rock");
 const paperButton = document.querySelector("#paper")
 const scissorsButton = document.querySelector("#scissors")
 const results = document.querySelector(".results")
+const p = document.createElement("p");
+p.style.fontSize = "18px"
+const winnerResult = document.createElement("p");
+results.appendChild(winnerResult);
+results.appendChild(p); //winner en cada round
+
+
 
 rockButton.addEventListener("click", () => {
     playGame("rock");
@@ -52,21 +59,18 @@ function playRound(humanChoice, computerChoice) {
 }
 
 function playGame(humanSelection){
+    winnerResult.textContent = "";
     let computerSelection = getComputerChoice();
     let winner = playRound(humanSelection, computerSelection);
     function finalWinner(fWinner){
-        const textWinner = document.createElement("p");
         if (fWinner === "human"){
-            textWinner.textContent = "YOU WIN!";
+            winnerResult.textContent = "YOU WIN!";
         } else if (fWinner === "computer"){
-            textWinner.textContent ="COMPUTER WIN!";
+            winnerResult.textContent = "COMPUTER WIN!";
         }
-        results.appendChild(textWinner);
     }
 
     function textWinner(roundWinner){
-        const p = document.createElement("p");
-        p.style.fontSize = "18px"
         if (roundWinner === "computer"){
             computerScore++;
             p.textContent = "COMPUTER WIN! Human Score: " + humanScore + " | Computer Score: " + computerScore;   
@@ -76,7 +80,6 @@ function playGame(humanSelection){
         } else {
             p.textContent = "It's a draw... Human Score: " + humanScore + " | Computer Score: " + computerScore; 
         }
-        results.appendChild(p);
     }
 
     if (winner === "human"){
@@ -88,12 +91,12 @@ function playGame(humanSelection){
     }
     
     if (humanScore === 5) {
+        humanScore = 0;
+        computerScore = 0;
         finalWinner("human");
-        humanScore = 0;
-        computerScore = 0;
     } else if (computerScore === 5) {
-        finalWinner("computer");
         humanScore = 0;
         computerScore = 0;
+        finalWinner("computer");
     }
 }
